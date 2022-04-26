@@ -1,0 +1,60 @@
+@model IEnumerable<Syra.Models.Resource>
+
+@{
+    ViewData["Title"] = "Resources";
+}
+
+<h1>Resources</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nameResource)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descriptionResource)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Links)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nameResource)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descriptionResource)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Links)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
